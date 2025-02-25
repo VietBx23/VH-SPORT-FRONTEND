@@ -22,9 +22,9 @@ const About = () => {
             </div>
             <div className="col-md-6">
               <img
-                src="https://via.placeholder.com/500x300"
+                src="/src/assets/images/banner5.jpg"
                 alt="About VHSPORT"
-                className="img-fluid rounded shadow"
+                className=" rounded shadow"
               />
             </div>
           </div>
@@ -72,7 +72,7 @@ const About = () => {
         <div className="container">
           <h2 className="fw-bold text-center mb-4">Our History</h2>
           <div className="row">
-            <div className="col-md-6 text-light">
+            <div className="col-md-6 text-dark">
               <p>
                 Founded in 2005, VHSPORT started as a small local shop catering
                 to sports enthusiasts. Over the years, we expanded to serve a
@@ -86,9 +86,9 @@ const About = () => {
             </div>
             <div className="col-md-6">
               <img
-                src="https://via.placeholder.com/500x300"
+                src="/src/assets/images/banner5.jpg"
                 alt="History"
-                className="img-fluid rounded shadow"
+                className=" rounded shadow"
               />
             </div>
           </div>
@@ -96,41 +96,51 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="bg-light py-5">
-        <div className="container">
+      {/* Team Section */}
+      <section className="bg-light">
+        <div className="container-fluid">
           <div className="text-center mb-4">
             <h2 className="fw-bold text-dark">Meet Our Team</h2>
             <p className="lead text-dark">
               A passionate team dedicated to your success.
             </p>
           </div>
-          <div className="row">
-            <div className="col-md-4 text-center team-member">
+          <div className="row ">
+            <div className="col-md-3 text-center team-member ">
               <img
-                src="https://via.placeholder.com/150"
+                src="/src/assets/images/developer.jpg"
                 alt="Team Member"
-                className="rounded-circle mb-3"
+                className="rounded-circle mb-3 "
               />
               <h5 className="text-dark">John Doe</h5>
               <p className="text-dark">CEO & Founder</p>
             </div>
-            <div className="col-md-4 text-center team-member">
+            <div className="col-md-3 text-center team-member">
               <img
-                src="https://via.placeholder.com/150"
+                src="/src/assets/images/developer1.jpg"
                 alt="Team Member"
                 className="rounded-circle mb-3"
               />
               <h5 className="text-dark">Jane Smith</h5>
               <p className="text-dark">Head of Marketing</p>
             </div>
-            <div className="col-md-4 text-center team-member">
+            <div className="col-md-3 text-center team-member">
               <img
-                src="https://via.placeholder.com/150"
+                src="/src/assets/images/design.jpg"
                 alt="Team Member"
                 className="rounded-circle mb-3"
               />
               <h5 className="text-dark">Emily Johnson</h5>
               <p className="text-dark">Lead Designer</p>
+            </div>
+            <div className="col-md-3 text-center team-member">
+              <img
+                src="/src/assets/images/design.jpg"
+                alt="Team Member"
+                className="rounded-circle mb-3"
+              />
+              <h5 className="text-dark">Michael Lee</h5>
+              <p className="text-dark">Product Manager</p>
             </div>
           </div>
         </div>
@@ -140,7 +150,7 @@ const About = () => {
       <section className="py-5">
         <div className="container">
           <div className="text-center mb-4">
-            <h2 className="fw-bold ">What Our Clients Say</h2>
+            <h2 className="fw-bold">What Our Clients Say</h2>
             <p className="lead text-light">
               Real feedback from our valued customers.
             </p>
@@ -149,6 +159,13 @@ const About = () => {
             <div className="col-md-4">
               <div className="card">
                 <div className="card-body">
+                  <img
+                    src="/src/assets/images/design.jpg"
+                    alt="Alex Johnson"
+                    className="rounded-circle mb-3"
+                    width="80"
+                    height="80"
+                  />
                   <p className="card-text">
                     "VHSPORT has been a game-changer for my training routine.
                     The quality is unmatched!"
@@ -160,6 +177,13 @@ const About = () => {
             <div className="col-md-4">
               <div className="card">
                 <div className="card-body">
+                  <img
+                    src="/src/assets/images/design.jpg"
+                    alt="Maria Lopez"
+                    className="rounded-circle mb-3"
+                    width="80"
+                    height="80"
+                  />
                   <p className="card-text">
                     "Their customer service and product variety are top-notch.
                     Highly recommend!"
@@ -171,6 +195,13 @@ const About = () => {
             <div className="col-md-4">
               <div className="card">
                 <div className="card-body">
+                  <img
+                    src="/src/assets/images/design.jpg"
+                    alt="James Brown"
+                    className="rounded-circle mb-3"
+                    width="80"
+                    height="80"
+                  />
                   <p className="card-text">
                     "VHSPORT truly understands the needs of athletes.
                     Outstanding experience!"

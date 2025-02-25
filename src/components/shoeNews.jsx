@@ -1,7 +1,7 @@
 import React from "react";
 export default function ShoeNewSComponet() {
   return (
-    <div className="container my-5 mb-5">
+    <div className="container  my-5 mb-5">
       <h2 className="text-center mb-4">TIN TỨC GIÀY</h2>
       <div className="row">
         <div className="col-md-3 col-6 col-sm-6 mb-2">

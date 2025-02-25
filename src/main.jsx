@@ -8,7 +8,7 @@ import AboutPage from "./pages/about.jsx"; // Trang About
 import ShopPage from "./pages/shop.jsx"; // Trang Shop
 import Cart from "./pages/cart.jsx";
 import CheckoutForm from "./pages/checkout.jsx";
-import SignInAndSignUp from "./pages/signInAndSignUp.jsx"; // Đổi thành SignInAndSignUp
+import AuthPage from "./pages/AuthPage.jsx"; // Đổi thành SignInAndSignUp
 
 createRoot(document.getElementById("root")).render(
   <Router>
@@ -19,7 +19,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/ShopPage" element={<ShopPage />} /> {/* Trang Shop */}
       <Route path="/cart" element={<Cart />} /> {/* Trang Cart */}
       <Route path="/checkout" element={<CheckoutForm />} /> {/* Trang Cart */}
-      <Route path="/signInAndSignUp" element={<SignInAndSignUp />} />{" "}
+      <Route path="/authPage" element={<AuthPage />} />{" "}
       {/* Trang SignIn and SignUp */}
     </Routes>
     <FooterComponent /> {/* FooterComponent hiển thị sau Routes */}

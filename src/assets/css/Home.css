@@ -117,7 +117,7 @@
   text-decoration: none;
 }
 .mobile-footer a:hover {
-  color: red;
+  color: #cccccc;
 }
 /* footer {
     position: sticky;
@@ -128,7 +128,7 @@
 
 /* product */
 .product-card {
-  /* background-color: #2a2a2a; */
+  background-color: #2a2a2a;
   border-radius: 10px;
   padding: 15px;
   margin: 10px;
@@ -403,11 +403,20 @@ small.text-muted {
   font-size: 0.9rem;
   color: #888;
 }
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .team-member img {
   width: 150px;
   height: 150px;
-  object-fit: cover;
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
 }
+
 .feature-icon {
   font-size: 2rem;
   color: #007bff;
@@ -576,4 +585,186 @@ button {
 .voucher-image img {
   width: 1000px;
   border-radius: 10px;
+}
+#menuToggle {
+  border: 2px solid white;
+}
+.social-login {
+  display: flex;
+  justify-content: center; /* Can be 'flex-start', 'flex-end' or 'center' */
+  gap: 15px; /* Spacing between icons */
+}
+
+.social-login a {
+  display: inline-block;
+}
+
+.social-login img {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+}
+.menu-desktop {
+  height: 0px;
+}
+/* Ẩn các menu con khi không hover */
+.dropdown-menu {
+  display: none;
+}
+
+/* Hiển thị menu con khi hover vào thẻ a */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Tổng thể */
+.container {
+  padding: 10px;
+}
+
+.table {
+  width: 100%;
+  overflow-x: auto;
+  font-size: 14px; /* Giảm kích thước font cho toàn bảng */
+}
+
+/* Hình ảnh sản phẩm */
+table img {
+  max-width: 70px; /* Giảm kích thước ảnh */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tùy chỉnh input số lượng */
+.quantity-input {
+  max-width: 50px; /* Giảm kích thước input */
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Tổng thể */
+.container {
+  padding: 5px; /* Giảm padding */
+}
+
+.table {
+  width: 100%;
+  overflow-x: auto;
+  font-size: 12px; /* Giảm font-size hơn nữa */
+}
+
+/* Hình ảnh sản phẩm */
+table img {
+  max-width: 50px; /* Giảm kích thước ảnh */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tùy chỉnh input số lượng */
+.quantity-input {
+  width: 100%; /* Chiếm toàn bộ chiều rộng cột */
+  /* text-align: center; */
+  font-size: 12px;
+  padding: 2px; /* Giảm padding bên trong */
+}
+
+/* Tóm tắt giỏ hàng */
+.cart-summary {
+  padding: 5px;
+  text-align: right;
+}
+
+.cart-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.3; /* Giảm khoảng cách dòng */
+  font-size: 12px; /* Giảm font-size */
+}
+
+/* Các nút */
+.btn {
+  margin: 5px 0;
+  font-size: 12px; /* Giảm kích thước font */
+  padding: 6px 8px; /* Giảm padding nút */
+}
+
+/* Media Queries */
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+  .table {
+    font-size: 11px; /* Font nhỏ hơn cho bảng */
+  }
+
+  .cart-summary {
+    text-align: left; /* Canh trái cho tablet */
+  }
+
+  .cart-summary ul {
+    font-size: 11px; /* Nhỏ hơn nữa */
+  }
+
+  .btn {
+    width: 100%; /* Full-width nút */
+    margin-top: 5px;
+  }
+
+  .quantity-input {
+    width: 100%; /* Chiếm hết chiều rộng */
+    font-size: 11px; /* Font nhỏ hơn */
+    padding: 1px; /* Giảm padding */
+  }
+
+  table tbody td {
+    font-size: 11px; /* Giảm kích thước font */
+    padding: 3px; /* Giảm padding cell */
+  }
+
+  .table img {
+    max-width: 40px; /* Nhỏ hơn nữa cho hình ảnh */
+  }
+}
+
+/* Mobile (max-width: 576px) */
+@media (max-width: 576px) {
+  /* Ẩn cột không cần thiết trên mobile */
+  table thead th:nth-child(3),
+  table thead th:nth-child(4),
+  table tbody td:nth-child(3),
+  table tbody td:nth-child(4) {
+    display: none;
+  }
+
+  table tbody td {
+    font-size: 10px; /* Nhỏ hơn nữa để phù hợp với màn hình nhỏ */
+    padding: 3px;
+  }
+
+  .table img {
+    max-width: 35px; /* Giảm hình ảnh nhỏ nhất */
+  }
+
+  .cart-summary {
+    font-size: 10px; /* Font nhỏ hơn */
+    text-align: left;
+    padding: 5px;
+  }
+
+  .btn {
+    padding: 4px 6px; /* Giảm padding nút */
+    font-size: 10px; /* Font nhỏ */
+  }
+
+  .quantity-input {
+    width: 100%; /* Full-width */
+    font-size: 10px; /* Nhỏ nhất cho input */
+    padding: 1px; /* Giảm padding */
+  }
+
+  /* Giảm khoảng cách */
+  .cart-summary ul {
+    line-height: 1.2;
+  }
 }

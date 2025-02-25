@@ -1,380 +1,158 @@
-Để làm đẹp cho file HTML của bạn, tôi sẽ thực hiện một số thay đổi về kiểu dáng,
-bố cục và thêm một số hiệu ứng để giao diện trở nên hấp dẫn hơn. Dưới đây là
-phiên bản đã được cải thiện: ```html
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanh toán đơn hàng</title>
-    <!-- Link đến Bootstrap 5.3 -->
+    <title>Team Carousel</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <style>
-      body {
-        background-color: #f0f2f5;
-      }
-      .container {
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        margin-top: 50px;
-      }
-      h2,
-      h4 {
-        color: #343a40;
-      }
-      .product-list,
-      .customer-info {
-        padding: 20px;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-      .product-price {
-        font-weight: bold;
-        color: #28a745;
-      }
-      .total-amount {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #dc3545;
-      }
-      .payment-methods img {
-        max-width: 50px;
-        margin-right: 10px;
-      }
-      .btn-custom {
-        transition: transform 0.2s;
-      }
-      .btn-custom:hover {
-        transform: scale(1.05);
-      }
-      .form-section {
-        margin-top: 30px;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
-    <div class="container mt-5">
-      <h2 class="text-center">Thanh toán đơn hàng</h2>
-
-      <div class="row">
-        <div class="col-md-6 product-list">
-          <h4>Danh sách sản phẩm</h4>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Image</th>
-                <th scope="col">Size</th>
-                <th scope="col">Color</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Sản phẩm A</td>
-                <td>
-                  <img src="https://via.placeholder.com/50" alt="Sản phẩm A" />
-                </td>
-                <td>M</td>
-                <td>Đỏ</td>
-                <td>
-                  <input
-                    type="number"
-                    class="form-control"
-                    value="2"
-                    min="1"
-                    max="10"
-                  />
-                </td>
-                <td>100.000 VND</td>
-                <td><span class="total-price">200.000 VND</span></td>
-                <td>
-                  <button class="btn btn-danger btn-sm">Xóa</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Sản phẩm B</td>
-                <td>
-                  <img src="https://via.placeholder.com/50" alt="Sản phẩm B" />
-                </td>
-                <td>L</td>
-                <td>Xanh</td>
-                <td>
-                  <input
-                    type="number"
-                    class="form-control"
-                    value="1"
-                    min="1"
-                    max="10"
-                  />
-                </td>
-                <td>200.000 VND</td>
-                <td><span class="total-price">200.000 VND</span></td>
-                <td>
-                  <button class="btn btn-danger btn-sm">Xóa</button>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="6" class="text-end">
-                  <strong>Tổng cộng:</strong>
-                </td>
-                <td>
-                  <span id="total-amount" class="total-amount"
-                    >400.000 VND</span
-                  >
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="container mt-5">
-            <h4>Chọn phương thức thanh toán</h4>
-            <div class="row">
-              <div class="col-md-4">
-                <button class="btn btn-outline-primary w-100 btn-custom">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Visa_2014_logo.svg/1024px-Visa_2014_logo.svg.png"
-                    alt="Visa"
-                  />
-                  Thanh toán qua Visa
-                </button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-outline-success w-100 btn-custom">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/M astercard-logo.svg/1280px-Mastercard-logo.svg.png"
-                    alt="Mastercard"
-                  />
-                  Thanh toán qua Mastercard
-                </button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-outline-warning w-100 btn-custom">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/MoMo_Logo.png/800px-MoMo_Logo.png"
-                    alt="MoMo"
-                  />
-                  Thanh toán qua MoMo
-                </button>
+    <div
+      id="teamCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-touch="true"
+    >
+      <div class="carousel-inner">
+        <!-- Slider 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center">
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 1</p>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-4">
-                <button class="btn btn-outline-secondary w-100 btn-custom">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ZaloPay_logo.svg/1280px-ZaloPay_logo.svg.png"
-                    alt="ZaloPay"
-                  />
-                  Thanh toán qua ZaloPay
-                </button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-outline-info w-100 btn-custom">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Paypal_logo.svg/1024px-Paypal_logo.svg.png"
-                    alt="PayPal"
-                  />
-                  Thanh toán qua PayPal
-                </button>
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-outline-danger w-100 btn-custom">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Apple_Pay_logo.svg/1024px-Apple_Pay_logo.svg.png"
-                    alt="ApplePay"
-                  />
-                  Thanh toán qua Apple Pay
-                </button>
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 2</p>
               </div>
             </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-12 text-center">
-              <button type="submit" class="btn btn-primary btn-lg">
-                Thanh toán
-              </button>
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 3</p>
+              </div>
+            </div>
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 4</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 customer-info">
-          <h4>Thông tin cá nhân</h4>
-          <div class="mb-3">
-            <label for="full-name" class="form-label">Họ và tên</label>
-            <input
-              type="text"
-              class="form-control"
-              id="full-name"
-              placeholder="Nhập họ và tên"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Nhập email"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="phone" class="form-label">Số điện thoại</label>
-            <input
-              type="text"
-              class="form-control"
-              id="phone"
-              placeholder="Nhập số điện thoại"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="province" class="form-label">Tỉnh/Thành phố</label>
-            <select class="form-select" id="province"></select>
-          </div>
-          <div class="mb-3">
-            <label for="district" class="form-label">Huyện/Quận</label>
-            <select class="form-select" id="district"></select>
-          </div>
-          <div class="mb-3">
-            <label for="ward" class="form-label">Phường/Xã</label>
-            <select class="form-select" id="ward"></select>
-          </div>
-
-          <div class="form-section">
-            <h4>Nhập mã voucher</h4>
-            <input
-              type="text"
-              class="form-control"
-              id="voucher-code"
-              placeholder="Nhập mã voucher"
-            />
+        <!-- Slider 2 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 5</p>
+              </div>
+            </div>
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 6</p>
+              </div>
+            </div>
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 7</p>
+              </div>
+            </div>
+            <div class="card mx-2" style="width: 18rem">
+              <img
+                src="https://via.placeholder.com/400"
+                class="card-img-top"
+                alt="Team Member"
+              />
+              <div class="card-body text-center">
+                <p class="card-text">Position 8</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <!-- Controls -->
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      const quantityInputs = document.querySelectorAll("input[type='number']");
-      quantityInputs.forEach((input) => {
-        input.addEventListener("input", updateTotalAmount);
-      });
-
-      function updateTotalAmount() {
-        let total = 0;
-        const rows = document.querySelectorAll("tbody tr");
-        rows.forEach((row) => {
-          const price = parseFloat(
-            row.cells[2].innerText.replace(" VND", "").trim()
-          );
-          const quantity = row.querySelector("input[type='number']").value;
-          const totalPrice = price * quantity;
-          row.querySelector(
-            ".total-price "
-          ).innerText = `${totalPrice.toLocaleString()} VND`;
-          total += totalPrice;
-        });
-        document.getElementById(
-          "total-amount"
-        ).innerText = `${total.toLocaleString()} VND`;
-      }
-
-      async function loadAddressData() {
-        try {
-          const data = {
-            provinces: [
-              { code: "01", name: "Hà Nội" },
-              { code: "02", name: "Hồ Chí Minh" },
-              { code: "03", name: "Đà Nẵng" },
-            ],
-          };
-
-          if (data && data.provinces) {
-            const provinceSelect = document.getElementById("province");
-            const districtSelect = document.getElementById("district");
-            const wardSelect = document.getElementById("ward");
-
-            data.provinces.forEach((province) => {
-              const option = document.createElement("option");
-              option.value = province.code;
-              option.textContent = province.name;
-              provinceSelect.appendChild(option);
-            });
-
-            provinceSelect.addEventListener("change", function () {
-              const provinceCode = this.value;
-              let districts = [];
-              if (provinceCode === "01") {
-                districts = [
-                  { code: "01", name: "Quận Ba Đình" },
-                  { code: "02", name: "Quận Cầu Giấy" },
-                ];
-              } else if (provinceCode === "02") {
-                districts = [
-                  { code: "01", name: "Quận 1" },
-                  { code: "02", name: "Quận 2" },
-                ];
-              } else if (provinceCode === "03") {
-                districts = [
-                  { code: "01", name: "Quận Hải Châu" },
-                  { code: "02", name: "Quận Sơn Trà" },
-                ];
-              }
-
-              districtSelect.innerHTML = "";
-              districts.forEach((district) => {
-                const option = document.createElement("option");
-                option.value = district.code;
-                option.textContent = district.name;
-                districtSelect.appendChild(option);
-              });
-            });
-
-            districtSelect.addEventListener("change", function () {
-              const districtCode = this.value;
-              let wards = [];
-              if (districtCode === "01") {
-                wards = [
-                  { code: "01", name: "Phường Ba Đình" },
-                  { code: "02", name: "Phường Cống Vị" },
-                ];
-              } else if (districtCode === "02") {
-                wards = [
-                  { code: "01", name: "Phường Dịch Vọng" },
-                  { code: "02", name: "Phường Mai Dịch" },
-                ];
-              }
-
-              wardSelect.innerHTML = "";
-              wards.forEach((ward) => {
-                const option = document.createElement("option");
-                option.value = ward.code;
-                option.textContent = ward.name;
-                wardSelect.appendChild(option);
-              });
-            });
-          } else {
-            console.error("Dữ liệu không hợp lệ");
-          }
-        } catch (error) {
-          console.error("Lỗi khi tải dữ liệu địa chỉ:", error);
-        }
-      }
-
-      loadAddressData();
-    </script>
+    <div class="centered-controls">
+      <button
+        class="carousel-control-prev bg-dark"
+        type="button"
+        data-bs-target="#teamCarousel"
+        data-bs-slide="prev"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chevron-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L6.707 7l4.647 4.646a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+      </button>
+      <button
+        class="carousel-control-next bg-dark"
+        type="button"
+        data-bs-target="#teamCarousel"
+        data-bs-slide="next"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chevron-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 1 1-.708-.708L9.293 8 4.646 3.354a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

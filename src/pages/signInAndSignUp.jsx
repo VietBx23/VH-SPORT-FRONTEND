@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 
 function AuthPage() {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [formState, setFormState] = useState("signin");
 
-  const toggleForms = () => {
-    setIsSignUp(!isSignUp);
+  const handleFormChange = (state) => {
+    setFormState(state);
   };
 
   return (
-    <div className="container-fluid ">
-      <div className="row justify-content-center cả">
+    <div className="container-fluid">
+      <div className="row justify-content-center">
         <div className="col-sm-8">
-          <div className="card p-4">
+          <div className="card border-light p-4">
             <div className="row g-0">
-              <div
-                className="col-md-6 d-flex justify-content-center align-items-center"
-                id="signinImage"
-              >
+              <div className="col-md-6 d-flex justify-content-center align-items-center">
                 <img
                   alt="Illustration"
-                  className=""
                   src="https://storage.googleapis.com/a1aa/image/MJIe7Sxix624cqyU1jMhMypPYScI8cU02nHnC9Q9SLrTGqBKA.jpg"
                   height="500"
                   width="400"
@@ -27,10 +23,14 @@ function AuthPage() {
               </div>
               <div className="col-md-6">
                 <div className="card-body">
-                  {!isSignUp ? (
-                    <SignInForm toggleForms={toggleForms} />
-                  ) : (
-                    <SignUpForm toggleForms={toggleForms} />
+                  {formState === "signin" && (
+                    <SignInForm handleFormChange={handleFormChange} />
+                  )}
+                  {formState === "signup" && (
+                    <SignUpForm handleFormChange={handleFormChange} />
+                  )}
+                  {formState === "forgotPassword" && (
+                    <ForgotPasswordForm handleFormChange={handleFormChange} />
                   )}
                 </div>
               </div>
@@ -42,7 +42,7 @@ function AuthPage() {
   );
 }
 
-function SignInForm({ toggleForms }) {
+function SignInForm({ handleFormChange }) {
   return (
     <div id="signinForm">
       <h3 className="card-title text-center">Sign In</h3>
@@ -54,8 +54,8 @@ function SignInForm({ toggleForms }) {
               placeholder="Your Email"
               type="email"
             />
-            <span className="input-group-text text-primary">
-              <i class="fas fa-envelope fa-lg"></i>
+            <span className="input-group-text ">
+              <i className="fas fa-envelope fa-lg"></i>
             </span>
           </div>
         </div>
@@ -66,8 +66,8 @@ function SignInForm({ toggleForms }) {
               placeholder="Password"
               type="password"
             />
-            <span className="input-group-text text-primary">
-              <i class="fas fa-lock fa-lg"></i>
+            <span className="input-group-text ">
+              <i className="fas fa-lock fa-lg"></i>
             </span>
           </div>
         </div>
@@ -84,31 +84,49 @@ function SignInForm({ toggleForms }) {
         </div>
       </form>
       <div className="text-center mt-4">
-        <a className="toggle-button" onClick={toggleForms}>
+        <a href="#" onClick={() => handleFormChange("signup")}>
           Create an account
         </a>
       </div>
-      <div className="text-center mt-4">
+      <div className="text-center mt-3">
         <p>Or login with</p>
-        <div className="social-login">
+        <div className="social-login mt-3">
           <a className="facebook" href="#">
-            {/* <FaFacebookF /> */}
+            <img
+              src="/src/assets/images/facebook.png"
+              alt="Facebook"
+              className="rounded-circle mb-3"
+            />
           </a>
           <a className="twitter" href="#">
-            {/* <FaTwitter /> */}
+            <img
+              src="/src/assets/images/twitter.png"
+              alt="Twitter"
+              className="rounded-circle mb-3"
+            />
           </a>
           <a className="google" href="#">
-            {/* <FaGoogle /> */}
+            <img
+              src="/src/assets/images/google.png"
+              alt="Google"
+              className="rounded-circle mb-3"
+            />
           </a>
         </div>
+      </div>
+
+      <div className="text-center mt-4">
+        <a href="#" onClick={() => handleFormChange("forgotPassword")}>
+          Forgot Password?
+        </a>
       </div>
     </div>
   );
 }
 
-function SignUpForm({ toggleForms }) {
+function SignUpForm({ handleFormChange }) {
   return (
-    <div id="signupForm" style={{ display: "block" }}>
+    <div id="signupForm">
       <h3 className="card-title text-center">Sign Up</h3>
       <form>
         <div className="mb-4">
@@ -118,13 +136,17 @@ function SignUpForm({ toggleForms }) {
               placeholder="Your Name"
               type="text"
             />
-            <span className="input-group-text">{/* <FaUser /> */}</span>
+            <span className="input-group-text">
+              <i className="fas fa-users fa-lg"></i>
+            </span>
           </div>
         </div>
         <div className="mb-4">
           <div className="input-group">
             <input className="form-control" placeholder="Email" type="email" />
-            <span className="input-group-text">{/* <FaEnvelope /> */}</span>
+            <span className="input-group-text">
+              <i className="fas fa-envelope fa-lg"></i>
+            </span>
           </div>
         </div>
         <div className="mb-4">
@@ -134,7 +156,9 @@ function SignUpForm({ toggleForms }) {
               placeholder="Password"
               type="password"
             />
-            <span className="input-group-text">{/* <FaLock /> */}</span>
+            <span className="input-group-text">
+              <i className="fas fa-lock fa-lg"></i>
+            </span>
           </div>
         </div>
         <div className="mb-4">
@@ -144,7 +168,9 @@ function SignUpForm({ toggleForms }) {
               placeholder="Confirm Password"
               type="password"
             />
-            <span className="input-group-text">{/* <FaLock /> */}</span>
+            <span className="input-group-text">
+              <i className="fas fa-lock fa-lg"></i>
+            </span>
           </div>
         </div>
         <div className="d-grid">
@@ -154,8 +180,40 @@ function SignUpForm({ toggleForms }) {
         </div>
       </form>
       <div className="text-center mt-4">
-        <a className="toggle-button" onClick={toggleForms}>
+        <a href="#" onClick={() => handleFormChange("signin")}>
           Already have an account? Sign In
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function ForgotPasswordForm({ handleFormChange }) {
+  return (
+    <div id="forgotPasswordForm">
+      <h3 className="card-title text-center">Forgot Password</h3>
+      <form>
+        <div className="mb-4">
+          <div className="input-group">
+            <input
+              className="form-control"
+              placeholder="Your Email"
+              type="email"
+            />
+            <span className="input-group-text">
+              <i className="fas fa-envelope fa-lg"></i>
+            </span>
+          </div>
+        </div>
+        <div className="d-grid">
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+      <div className="text-center mt-4">
+        <a href="#" onClick={() => handleFormChange("signin")}>
+          Back to Sign In
         </a>
       </div>
     </div>

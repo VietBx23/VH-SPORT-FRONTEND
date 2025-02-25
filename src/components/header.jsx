@@ -4,32 +4,22 @@ export default function HeaderComponent() {
   // State for sidebar menu
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  // State for submenu toggles
-  const [submenusOpen, setSubmenusOpen] = useState({});
-
   // Toggle sidebar menu
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  // Toggle submenu
-  const toggleSubmenu = (submenuId) => {
-    setSubmenusOpen((prevSubmenus) => ({
-      ...prevSubmenus,
-      [submenuId]: !prevSubmenus[submenuId],
-    }));
-  };
-
   return (
     <div>
-      <div className=" text-black text-1xl py-2 title-header">
+      <div className="menu-desktop text-black text-1xl py-2 title-header">
         <div className="container-fluid">
           <h2 className="text-center mt-2">𝑉𝐻 𝑆𝑃𝑂𝑅𝑇 𝐺𝐸𝑁𝑈𝐼𝑁𝐸 𝑆𝑂𝐶𝐶𝐸𝑅 𝑆𝐻𝑂𝐸𝑆</h2>
         </div>
       </div>
+
       {/* Header */}
-      <header className=" py-4 sticky-top header-desktop">
-        <div className="container d-flex justify-content-between align-items-center">
+      <header className="py-4 header-desktop">
+        <div className="container menu-desktop d-flex justify-content-between align-items-center">
           <div className="d-lg-flex space-x-4 image-logo">
             <img
               src="/src/assets/images/logo-website.png"
@@ -37,52 +27,28 @@ export default function HeaderComponent() {
               className="img-fluid"
             />
           </div>
-          <nav className="d-none d-lg-flex space-x-6 ">
+          <nav className="d-none d-lg-flex space-x-6 sticky-top">
             <div className="relative">
               <a className="hover:text-gray-400" href="/" role="button">
                 <a>Home</a>
               </a>
             </div>
-            <div className="relative dropdown">
-              <a
-                className="hover:text-gray-400 dropdown-toggle"
-                href="/about"
-                role="button"
-                onClick={() => toggleSubmenu("about")}
-              >
-                <a>About</a>
+
+            <div className="relative">
+              <a className="hover:text-gray-400 " href="/about" role="button">
+                About
               </a>
-              <ul
-                className={`dropdown-menu ${
-                  submenusOpen["about"] ? "show" : ""
-                }`}
-              >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    About 1
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    About 2
-                  </a>
-                </li>
-              </ul>
             </div>
+
             <div className="relative dropdown">
               <a
                 className="hover:text-gray-400 dropdown-toggle"
                 href="/ShopPage"
                 role="button"
-                onClick={() => toggleSubmenu("shop")}
               >
-                <a>Shop</a>
+                Shop
               </a>
-              <ul
-                className={`dropdown-menu ${
-                  submenusOpen["shop"] ? "show" : ""
-                }`}
-              >
+              <ul className="dropdown-menu">
                 <li>
                   <a className="dropdown-item" href="#">
                     Nike
@@ -95,20 +61,16 @@ export default function HeaderComponent() {
                 </li>
               </ul>
             </div>
+
             <div className="relative dropdown">
               <a
                 className="hover:text-gray-400 dropdown-toggle"
                 href="#"
                 role="button"
-                onClick={() => toggleSubmenu("categories")}
               >
-                <a>Categories</a>
+                Categories
               </a>
-              <ul
-                className={`dropdown-menu ${
-                  submenusOpen["categories"] ? "show" : ""
-                }`}
-              >
+              <ul className="dropdown-menu">
                 <li>
                   <a className="dropdown-item" href="#">
                     Category 1
@@ -122,11 +84,12 @@ export default function HeaderComponent() {
               </ul>
             </div>
           </nav>
+
           <div className="d-none d-lg-flex space-x-4" id="topIcons">
             <a className="hover:text-gray-400" href="#">
               <i className="fas fa-search"></i>
             </a>
-            <a className="hover:text-gray-400" href="/signInAndSignUp">
+            <a className="hover:text-gray-400" href="/authPage">
               <i className="fas fa-user"></i>
             </a>
             <a className="hover:text-gray-400" href="#">
@@ -161,7 +124,7 @@ export default function HeaderComponent() {
 
             <button
               id="menuToggle"
-              className="hover:text-gray-400"
+              className="listMenuMobile hover:text-gray-400"
               onClick={toggleSidebar}
             >
               <i className="fas fa-bars"></i>
@@ -189,18 +152,13 @@ export default function HeaderComponent() {
             <li>
               <div className="d-flex justify-content-between align-items-center mt-5">
                 <a href="#" className="text-white block py-2">
-                  <a>Demos</a>
+                  Demos
                 </a>
-                <button
-                  className="text-white"
-                  onClick={() => toggleSubmenu("demos")}
-                >
-                  {submenusOpen["demos"] ? "-" : "+"}
+                <button className="text-white">
+                  {/* No toggle needed here */}
                 </button>
               </div>
-              <ul
-                className={`submenu ${submenusOpen["demos"] ? "active" : ""}`}
-              >
+              <ul className="submenu">
                 <li>
                   <a className="dropdown-item" href="#">
                     Demo 1
@@ -218,21 +176,17 @@ export default function HeaderComponent() {
                 </li>
               </ul>
             </li>
+
             <li>
               <div className="d-flex justify-content-between align-items-center">
                 <a href="#" className="text-white block py-2">
-                  <a>Latest</a>
+                  Latest
                 </a>
-                <button
-                  className="text-white"
-                  onClick={() => toggleSubmenu("latest")}
-                >
-                  {submenusOpen["latest"] ? "-" : "+"}
+                <button className="text-white">
+                  {/* No toggle needed here */}
                 </button>
               </div>
-              <ul
-                className={`submenu ${submenusOpen["latest"] ? "active" : ""}`}
-              >
+              <ul className="submenu">
                 <li>
                   <a className="dropdown-item" href="#">
                     Latest 1
@@ -245,23 +199,17 @@ export default function HeaderComponent() {
                 </li>
               </ul>
             </li>
+
             <li>
               <div className="d-flex justify-content-between align-items-center">
                 <a href="#" className="text-white block py-2">
-                  <a>Shop</a>
+                  Shop
                 </a>
-                <button
-                  className="text-white"
-                  onClick={() => toggleSubmenu("shopSidebar")}
-                >
-                  {submenusOpen["shopSidebar"] ? "-" : "+"}
+                <button className="text-white">
+                  {/* No toggle needed here */}
                 </button>
               </div>
-              <ul
-                className={`submenu ${
-                  submenusOpen["shopSidebar"] ? "active" : ""
-                }`}
-              >
+              <ul className="submenu">
                 <li>
                   <a className="dropdown-item" href="#">
                     Shop 1
@@ -274,14 +222,15 @@ export default function HeaderComponent() {
                 </li>
               </ul>
             </li>
+
             <li>
               <a href="#" className="text-white block py-2">
-                <a>Contact</a>
+                Contact
               </a>
             </li>
             <li>
               <a href="#" className="text-white block py-2">
-                <a>About Us</a>
+                About Us
               </a>
             </li>
           </ul>
