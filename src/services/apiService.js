@@ -48,6 +48,18 @@ export const login = async (username, password) => {
   }
 };
 
+export const loginWithFacebook = async (accessToken) => {
+  console.log("Sending Facebook accessToken to backend:", accessToken);
+  try {
+    const response = await apiClient.post("/users/facebook-login", {
+      accessToken,
+    });
+    return response.data.data;
+  } catch (error) {
+    console.error("Facebook API error:", error);
+    throw error.response?.data || { message: "Facebook login failed" };
+  }
+};
 export const loginWithGoogle = async (idToken) => {
   try {
     const response = await apiClient.post("/users/google-login", { idToken });
@@ -66,7 +78,7 @@ export const signup = async (username, password, email, fullname, image) => {
       fullname,
       image,
     });
-    return response.data; // { message, userId }
+    return response.data; // { message, userId }x
   } catch (error) {
     throw error.response?.data || { message: "Đăng ký thất bại" };
   }

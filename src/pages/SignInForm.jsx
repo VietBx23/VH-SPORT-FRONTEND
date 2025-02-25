@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { loginWithGoogle } from "../services/apiService.js"; // Đảm bảo đường dẫn đúng
+import { loginWithGoogle, loginWithFacebook } from "../services/apiService.js"; // Đảm bảo đường dẫn đúng
 
 function SignInForm({ handleFormChange }) {
   const [username, setUsername] = useState("");
@@ -10,7 +10,7 @@ function SignInForm({ handleFormChange }) {
 
   // Hàm xử lý đăng nhập Google
   const handleGoogleLogin = async (response) => {
-    const idToken = response.credential; // Lấy idToken từ Google
+    const idToken = response.credential;
     setIsLoading(true);
     setError("");
     try {
@@ -21,22 +21,78 @@ function SignInForm({ handleFormChange }) {
       window.location.href = "/";
     } catch (err) {
       setError(err.message || "Đăng nhập Google thất bại");
+      console.error("Google login error:", err);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Hàm xử lý đăng nhập Facebook
+  const handleFacebookLogin = async (response) => {
+    const accessToken = response.accessToken;
+    console.log("Facebook accessToken received:", accessToken);
+    setIsLoading(true);
+    setError("");
+    try {
+      const data = await loginWithFacebook(accessToken);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      console.log("Đăng nhập Facebook thành công:", data);
+      window.location.href = "/";
+    } catch (err) {
+      setError(err.message || "Đăng nhập Facebook thất bại");
+      console.error("Facebook login error:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Hàm kiểm tra trạng thái đăng nhập Facebook
+  const checkFacebookLoginState = () => {
+    if (!window.FB) {
+      setError("Facebook SDK chưa sẵn sàng, vui lòng thử lại sau");
+      console.error("Facebook SDK not loaded");
+      return;
+    }
+
+    window.FB.getLoginStatus((response) => {
+      if (response.status === "connected") {
+        handleFacebookLogin(response.authResponse);
+      } else {
+        window.FB.login(
+          (loginResponse) => {
+            if (loginResponse.authResponse) {
+              handleFacebookLogin(loginResponse.authResponse);
+            } else {
+              setError("Đăng nhập Facebook bị hủy hoặc thất bại");
+              console.log("Facebook login cancelled:", loginResponse);
+            }
+          },
+          { scope: "public_profile,email" } // Quyền yêu cầu
+        );
+      }
+    });
   };
 
   // Khởi tạo Google Sign-In
   useEffect(() => {
     window.google.accounts.id.initialize({
       client_id:
-        "965256866011-jlh1kddr9q0o3177hhf91s20bbdd0o90.apps.googleusercontent.com", // Client ID của bạn
+        "965256866011-jlh1kddr9q0o3177hhf91s20bbdd0o90.apps.googleusercontent.com",
       callback: handleGoogleLogin,
     });
     window.google.accounts.id.renderButton(
       document.getElementById("googleSignInButton"),
       { theme: "outline", size: "large", text: "signin_with" }
     );
+
+    // Kiểm tra Facebook SDK đã tải chưa
+    const checkFacebookSDK = setInterval(() => {
+      if (window.FB) {
+        console.log("Facebook SDK loaded");
+        clearInterval(checkFacebookSDK);
+      }
+    }, 100);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -103,8 +159,15 @@ function SignInForm({ handleFormChange }) {
       </form>
       <div className="text-center mt-3">
         <p>Or login with</p>
-        <div className="social-login mt-3">
+        <div className="social-login mt-3 flex justify-center gap-4">
           <div id="googleSignInButton"></div>
+          <button
+            onClick={checkFacebookLoginState}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+            disabled={isLoading}
+          >
+            <i className="fab fa-facebook-f fa-lg"></i>
+          </button>
         </div>
       </div>
       <div className="text-center mt-4">
